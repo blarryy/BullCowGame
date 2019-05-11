@@ -1,17 +1,19 @@
 #include "FBullCowGame.h"
 
+
+using int32 = int;
 //convention: put getters at the top
 //const behind a member/class function decleration means 
 // this function can't change any variables inside the class
-int FBullCowGame::getMaxTries() const{return myMaxTries;}
-int FBullCowGame::getCurrentTry() const {return myCurrentTry;}
+int32 FBullCowGame::getMaxTries() const{return myMaxTries;}
+int32 FBullCowGame::getCurrentTry() const {return myCurrentTry;}
 
 FBullCowGame::FBullCowGame(){
      reset();
 }
 
 void FBullCowGame::reset(){
-    constexpr MAX_TRIES = 8;
+    constexpr int32 MAX_TRIES = 8;
     myCurrentTry = 1;
     myMaxTries = MAX_TRIES;
     return;
@@ -22,6 +24,6 @@ bool FBullCowGame::isGameWon() const{
     return false;
 }
 
-bool FBullCowGame::checkGuessValidity(std::string s){
+bool FBullCowGame::checkGuessValidity(FString){
     return false;
 }

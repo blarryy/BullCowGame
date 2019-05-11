@@ -11,11 +11,31 @@ int32 FBullCowGame::getCurrentTry() const {return myCurrentTry;}
 FBullCowGame::FBullCowGame(){
      reset();
 }
+//recieves a VALID guess, increments turn and return counts
+BullCowCount FBullCowGame::SubmitGuess(FString Guess){
+    // increment the turn number
+    int32 HiddenWordLength = MyHiddenWord.length();
+    myCurrentTry++;
+    BullCowCount BullCowCount;
+    for (int32 i = 0; i < HiddenWordLength; i++){
+        for (int32 j = 0; j < HiddenWordLength; j++){
+            if (Guess[i] == MyHiddenWord[j] && i == j){
+                BullCowCount.Bulls++;
+            }
+            else if (Guess[i] == MyHiddenWord[j]){
+                BullCowCount.Cows++;
+            }
+        }
+    }
+    return BullCowCount;
+}
 
 void FBullCowGame::reset(){
     constexpr int32 MAX_TRIES = 8;
+    const FString HIDDEN_WORD = "and";
     myCurrentTry = 1;
     myMaxTries = MAX_TRIES;
+    MyHiddenWord = HIDDEN_WORD;
     return;
 }
 

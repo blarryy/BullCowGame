@@ -46,11 +46,11 @@ void playGame(){
     constexpr int32 NUMBER_OF_TURNS = 5;
     for (int32 count = 1; count <= NUMBER_OF_TURNS; count++){
         Ftext guess = getGuess();
-        //TODO check if guess is valid
-
-        //submit valid guess to game
-        //print num of bulls and cows
+        //submit valid guess, and recieve counts
+        BullCowCount BullCowCount = BCGame.SubmitGuess(guess);
         std::cout << "your guess was: " << guess << std::endl;
+        std::cout << "Bulls are: " << BullCowCount.Bulls << std::endl;
+        std::cout << "Cows are: " << BullCowCount.Cows << std::endl;
     }
     //TODO: GAME SUMMARY
 }

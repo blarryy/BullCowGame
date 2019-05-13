@@ -23,9 +23,10 @@ FBullCowGame BCGame;
 
 
 void printIntro(){
-    constexpr int32 WORD_LENGTH = 5;
-    std::cout << "Can you Guess " << WORD_LENGTH 
-    << " letter isogram I'm thinking of? \n"; 
+    // constexpr int32 WORD_LENGTH = 5;
+    std::cout << "Welcome to the bull cow game" << std::endl;
+    std::cout << "Can you Guess the " 
+    << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of? \n"; 
 }
 
 Ftext getGuess(){
@@ -41,10 +42,10 @@ Ftext getGuess(){
 void playGame(){
     BCGame.reset();
 // loop for the number of turns asking for guesses
-    int32 currentTry = BCGame.getCurrentTry();
-    std::cout <<  "Try " << currentTry << "." << std::endl;
     constexpr int32 NUMBER_OF_TURNS = 5;
     for (int32 count = 1; count <= NUMBER_OF_TURNS; count++){
+        int32 currentTry = BCGame.getCurrentTry();
+        std::cout <<  "Try " << currentTry << "." << std::endl;
         Ftext guess = getGuess();
         //submit valid guess, and recieve counts
         BullCowCount BullCowCount = BCGame.SubmitGuess(guess);

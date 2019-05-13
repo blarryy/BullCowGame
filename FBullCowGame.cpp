@@ -7,7 +7,7 @@ using int32 = int;
 // this function can't change any variables inside the class
 int32 FBullCowGame::getMaxTries() const{return myMaxTries;}
 int32 FBullCowGame::getCurrentTry() const {return myCurrentTry;}
-
+int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
 FBullCowGame::FBullCowGame(){
      reset();
 }
@@ -32,7 +32,7 @@ BullCowCount FBullCowGame::SubmitGuess(FString Guess){
 
 void FBullCowGame::reset(){
     constexpr int32 MAX_TRIES = 8;
-    const FString HIDDEN_WORD = "and";
+    const FString HIDDEN_WORD = "ocean";
     myCurrentTry = 1;
     myMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;
@@ -44,6 +44,6 @@ bool FBullCowGame::isGameWon() const{
     return false;
 }
 
-bool FBullCowGame::checkGuessValidity(FString){
+bool FBullCowGame::checkGuessValidity (FString) const{
     return false;
 }

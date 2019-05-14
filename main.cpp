@@ -25,6 +25,14 @@ FBullCowGame BCGame;
 
 void printIntro(){
     // constexpr int32 WORD_LENGTH = 5;
+    std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
+		std::cout << std::endl;
+		std::cout << "          }   {         ___ " << std::endl;
+		std::cout << "          (o o)        (o o) " << std::endl;
+		std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+		std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+		std::cout << " *  |-,--- |              |------|  * " << std::endl;
+		std::cout << "    ^      ^              ^      ^ " << std::endl;
     std::cout << "\n\nWelcome to the bull cow game" << std::endl;
     std::cout << "Can you Guess the " 
     << BCGame.GetHiddenWordLength() << " letter lowercase isogram I'm thinking of? \n\n"; 
@@ -35,7 +43,7 @@ Ftext getValidGuess(){
     Ftext guess;
     do{
         int32 currentTry = BCGame.getCurrentTry();
-        std::cout <<  "Try " << currentTry << "of " << BCGame.getMaxTries()
+        std::cout <<  "Try " << currentTry << " of " << BCGame.getMaxTries()
         << std::endl;
         guess = "";
         std::cout << "Enter your guess\n";

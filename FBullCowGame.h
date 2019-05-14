@@ -10,6 +10,16 @@ struct BullCowCount
     int32 Cows = 0;
 };
 
+enum class EWordStatus 
+{
+    Invalid,
+    OK,
+    Not_Isogram,
+    Wrong_Length,
+    Not_Lowercase
+};
+
+
 class FBullCowGame
 {
 public:
@@ -20,11 +30,14 @@ public:
     int32 getCurrentTry() const;
     int32 GetHiddenWordLength() const;
     bool isGameWon() const;
-    bool checkGuessValidity(FString) const;
+    EWordStatus checkGuessValidity(FString) const;
     BullCowCount SubmitGuess(FString);
 
 private:
     int32 myCurrentTry;
     int32 myMaxTries;
     FString MyHiddenWord;
+    bool bGameIsWon;
+    bool IsIsogram(FString) const;
+    bool IsLowercase(FString) const;
 };

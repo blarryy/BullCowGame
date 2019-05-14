@@ -1,0 +1,18 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",//这里根据自己编译器改
+            "args": [
+                "-g",//调试程序必须设置的参数
+                "-std=c++11",
+                "FBullCowGame.cpp",
+                "main.cpp"
+            ]
+        }
+    ]
+}

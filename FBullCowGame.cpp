@@ -1,5 +1,7 @@
 #include "FBullCowGame.h"
 #include <map>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 #define TMap std::map
 // define and using is similar
 using int32 = int;
@@ -35,7 +37,8 @@ BullCowCount FBullCowGame::SubmitGuess(FString Guess){
 
 void FBullCowGame::reset(){
     constexpr int32 MAX_TRIES = 8;
-    const FString HIDDEN_WORD = "ocean";
+    srand (time(NULL));
+    const FString HIDDEN_WORD = words[rand() % 5];
     myCurrentTry = 1;
     myMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;

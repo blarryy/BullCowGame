@@ -37,6 +37,7 @@ private:
     int32 myCurrentTry;
     int32 myMaxTries;
     FString MyHiddenWord;
+    FString words[5] = {"lakers", "kobe", "sam", "disney", "airpod"};
     bool bGameIsWon;
     bool IsIsogram(FString) const;
     bool IsLowercase(FString) const;

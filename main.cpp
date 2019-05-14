@@ -107,6 +107,7 @@ bool askToPlayAgain(){
 //don't change this int to int32
 int main(){
     do{
+        BCGame.reset();
         printIntro();
         playGame();
     }while(askToPlayAgain());

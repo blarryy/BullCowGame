@@ -33,7 +33,8 @@ void printIntro(){
 		std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
 		std::cout << " *  |-,--- |              |------|  * " << std::endl;
 		std::cout << "    ^      ^              ^      ^ " << std::endl;
-    std::cout << "\n\nWelcome to the bull cow game" << std::endl;
+    std::cout << "\nA bull is a right letter at the right place" << std::endl;
+    std::cout << "A cow is a right letter at the wrong place" << std::endl;
     std::cout << "Can you Guess the " 
     << BCGame.GetHiddenWordLength() << " letter lowercase isogram I'm thinking of? \n\n"; 
 }

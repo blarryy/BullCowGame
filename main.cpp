@@ -21,6 +21,7 @@ Ftext getGuess();
 bool askToPlayAgain();
 void printGameSummary();
 FBullCowGame BCGame;
+FString prev = "";
 
 
 void printIntro(){
@@ -74,7 +75,6 @@ Ftext getValidGuess(){
 }
 
 void playGame(){
-    BCGame.reset();
 // loop for the number of turns asking for guesses
     int32 MaxTries = BCGame.getMaxTries();
     while(!BCGame.isGameWon() && BCGame.getCurrentTry() <= MaxTries){
@@ -108,7 +108,11 @@ bool askToPlayAgain(){
 //don't change this int to int32
 int main(){
     do{
-        BCGame.reset();
+        if (BCGame.isGameWon()){
+            BCGame.resetAfterWin();
+        }else{
+            BCGame.resetAfterLose();
+        }
         printIntro();
         playGame();
     }while(askToPlayAgain());

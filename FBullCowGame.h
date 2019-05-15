@@ -25,10 +25,12 @@ class FBullCowGame
 public:
     //constructor
     FBullCowGame();
-    void reset();  
+    void resetAfterWin();  
+    void resetAfterLose();
     int32 getMaxTries() const;
     int32 getCurrentTry() const;
     int32 GetHiddenWordLength() const;
+    void setToPrevHiddenWord();
     bool isGameWon() const;
     EWordStatus checkGuessValidity(FString) const;
     BullCowCount SubmitGuess(FString);
@@ -37,6 +39,7 @@ private:
     int32 myCurrentTry;
     int32 myMaxTries;
     FString MyHiddenWord;
+    FString prevHiddenWord = "";
     FString words[5] = {"lakers", "kobe", "sam", "disney", "airpod"};
     bool bGameIsWon;
     bool IsIsogram(FString) const;

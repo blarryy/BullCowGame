@@ -11,9 +11,16 @@ using int32 = int;
 int32 FBullCowGame::getMaxTries() const{return myMaxTries;}
 int32 FBullCowGame::getCurrentTry() const {return myCurrentTry;}
 int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
+
 FBullCowGame::FBullCowGame(){
-     reset();
+     resetAfterWin();
 }
+
+void FBullCowGame::setToPrevHiddenWord(){
+    MyHiddenWord = prevHiddenWord;
+}
+
+
 //recieves a VALID guess, increments turn and return counts
 BullCowCount FBullCowGame::SubmitGuess(FString Guess){
     // increment the turn number
@@ -35,13 +42,21 @@ BullCowCount FBullCowGame::SubmitGuess(FString Guess){
     return BullCowCount;
 }
 
-void FBullCowGame::reset(){
+void FBullCowGame::resetAfterWin(){
     constexpr int32 MAX_TRIES = 8;
     srand (time(NULL));
     const FString HIDDEN_WORD = words[rand() % 5];
     myCurrentTry = 1;
     myMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;
+    bGameIsWon = false;
+    return;
+}
+
+void FBullCowGame::resetAfterLose(){
+    constexpr int32 MAX_TRIES = 8;
+    myCurrentTry = 1;
+    myMaxTries = MAX_TRIES;
     bGameIsWon = false;
     return;
 }

@@ -20,6 +20,10 @@ void FBullCowGame::setToPrevHiddenWord(){
     MyHiddenWord = prevHiddenWord;
 }
 
+char FBullCowGame::getFirstLetter() const{
+    return MyHiddenWord[0];
+}
+
 
 //recieves a VALID guess, increments turn and return counts
 BullCowCount FBullCowGame::SubmitGuess(FString Guess){
@@ -67,8 +71,11 @@ bool FBullCowGame::isGameWon() const{
 }
 
 EWordStatus FBullCowGame::checkGuessValidity (FString guess) const
-{
-    if (!IsIsogram(guess)){
+{   
+    if (guess.compare("hint") == 0){
+        return EWordStatus::Hint;
+    }
+    else if (!IsIsogram(guess)){
         return EWordStatus::Not_Isogram;
     }else if (!IsLowercase(guess)){
         return EWordStatus::Not_Lowercase;

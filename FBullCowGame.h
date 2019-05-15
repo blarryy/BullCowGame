@@ -16,7 +16,8 @@ enum class EWordStatus
     OK,
     Not_Isogram,
     Wrong_Length,
-    Not_Lowercase
+    Not_Lowercase,
+    Hint
 };
 
 
@@ -32,6 +33,7 @@ public:
     int32 GetHiddenWordLength() const;
     void setToPrevHiddenWord();
     bool isGameWon() const;
+    char getFirstLetter() const;
     EWordStatus checkGuessValidity(FString) const;
     BullCowCount SubmitGuess(FString);
 
@@ -40,7 +42,7 @@ private:
     int32 myMaxTries;
     FString MyHiddenWord;
     FString prevHiddenWord = "";
-    FString words[5] = {"lakers", "kobe", "sam", "disney", "airpod"};
+    FString words[10] = {"glow", "lamp", "blue", "ocean", "sin", "gin", "vodka", "goal", "fly", "god"};
     bool bGameIsWon;
     bool IsIsogram(FString) const;
     bool IsLowercase(FString) const;

@@ -20,24 +20,29 @@ void playGame();
 Ftext getGuess();
 bool askToPlayAgain();
 void printGameSummary();
+void giveHint();
 FBullCowGame BCGame;
 FString prev = "";
 
 
 void printIntro(){
     // constexpr int32 WORD_LENGTH = 5;
+    std::cout << "          }   {         ___ " << std::endl;
+    std::cout << "          (o o)        (o o) " << std::endl;
+    std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+    std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+    std::cout << " *  |-,--- |              |------|  * " << std::endl;
+    std::cout << "    ^      ^              ^      ^ " << std::endl;
     std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
-		std::cout << std::endl;
-		std::cout << "          }   {         ___ " << std::endl;
-		std::cout << "          (o o)        (o o) " << std::endl;
-		std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
-		std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
-		std::cout << " *  |-,--- |              |------|  * " << std::endl;
-		std::cout << "    ^      ^              ^      ^ " << std::endl;
-    std::cout << "\nA bull is a right letter at the right place" << std::endl;
-    std::cout << "A cow is a right letter at the wrong place" << std::endl;
+    std::cout << "\n\nHOW THE GAME WORKS:" << std::endl;
+    std::cout << "I'm thinking of a word, which has no repeating characters in it." << std::endl;
+    std::cout << "You will try to guess that word. And after each of your guess, I'll give you some clues about the hidden word." << std::endl;
+    std::cout << "The clues are called bulls and cows.If the clue says there are 2 BULLS in your guess, it means there are two letters in your guess that EXIST in the secret word, and they ARE in the right place.If the clue says there are 2 COWS in your guess, it means there are two letters in your guess that EXIST in the hidden word, but NOT in the right place." << std::endl;
+    std::cout << "For example, if the hidden word is kobe, and you guess koeb, there are two bulls: the letter k and o, and there are two cows: the letter e and b" << std::endl;
+    std::cout << "\nAlso, if you need a hint, just type in the word hint!!" << std::endl;
+    std::cout << "\nLET'S START THE GAME!! " << std::endl;
     std::cout << "Can you Guess the " 
-    << BCGame.GetHiddenWordLength() << " letter lowercase isogram I'm thinking of? \n\n"; 
+    << BCGame.GetHiddenWordLength() << " letter lowercase word I'm thinking of??? \n\n"; 
 }
 
 Ftext getValidGuess(){
@@ -55,6 +60,9 @@ Ftext getValidGuess(){
         // std::cout << "your guess was: " << guess << std::endl;
         status = BCGame.checkGuessValidity(guess);
         switch(status){
+            case EWordStatus::Hint:
+                giveHint();
+                break;
             case EWordStatus::Wrong_Length:
                 std::cout << "Please enter a " << 
                 BCGame.GetHiddenWordLength() << " letter word\n"
@@ -90,10 +98,14 @@ void playGame(){
 }
 void printGameSummary(){
     if (BCGame.isGameWon()){
-        std::cout << "Congratulations, you won!!\n\n";
+        std::cout << "Congratulations, you won!! You're a true genious!!\n\n";
     }else{
-        std::cout << "Ops, that was your last try, better luck next time!!\n\n";
+        std::cout << "Ops, that was your last try, you should try again and get it!!\n\n";
     }
+}
+
+void giveHint(){
+    std::cout << "The first character of the word is " << BCGame.getFirstLetter() << std::endl;
 }
 
 
@@ -119,4 +131,3 @@ int main(){
     
     return 0;
 }
-

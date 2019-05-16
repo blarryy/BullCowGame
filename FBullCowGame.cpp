@@ -8,9 +8,15 @@ using int32 = int;
 //convention: put getters at the top
 //const behind a member/class function decleration means 
 // this function can't change any variables inside the class
-int32 FBullCowGame::getMaxTries() const{return myMaxTries;}
+
 int32 FBullCowGame::getCurrentTry() const {return myCurrentTry;}
 int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
+
+int32 FBullCowGame::getMaxTries() const{
+    TMap<int32, int32> wordLengthToMaxTries { {3, 6}, {4, 7}, {5, 8}, {6, 9}};
+    return wordLengthToMaxTries[MyHiddenWord.length()];
+}
+
 
 FBullCowGame::FBullCowGame(){
      resetAfterWin();
@@ -47,20 +53,17 @@ BullCowCount FBullCowGame::SubmitGuess(FString Guess){
 }
 
 void FBullCowGame::resetAfterWin(){
-    constexpr int32 MAX_TRIES = 8;
     srand (time(NULL));
     const FString HIDDEN_WORD = words[rand() % 5];
     myCurrentTry = 1;
-    myMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;
     bGameIsWon = false;
     return;
 }
 
 void FBullCowGame::resetAfterLose(){
-    constexpr int32 MAX_TRIES = 8;
+    int32 MAX_TRIES = getMaxTries();
     myCurrentTry = 1;
-    myMaxTries = MAX_TRIES;
     bGameIsWon = false;
     return;
 }
